@@ -40,10 +40,20 @@ export default function Navbar({
 	logoSrc = "/placeholder.svg?height=32&width=32",
 }: NavbarProps) {
 	const [isOpen, setIsOpen] = useState(false);
-	const [_, setScrolled] = useState(false);
+	const [scrolled, setScrolled] = useState(false);
 
 	// Handle scroll effect
 	useEffect(() => {
+		if (scrolled) {
+			document.body.style.paddingTop = "4rem";
+		} else {
+			document.body.style.paddingTop = "0";
+		}
+	}, [scrolled]);
+
+	// Handle scroll event
+	useEffect(() => {
+		if (typeof window === "undefined") return;
 
 		const handleScroll = () => {
 			if (window.scrollY > 10) {
