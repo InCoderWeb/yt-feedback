@@ -1,7 +1,7 @@
 "use client";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
-import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
+import { Highlight } from "@/components/ui/hero-highlight";
 import { Particles } from "@/components/magicui/particles";
 import { useEffect, useState } from "react";
 import { MacbookScroll } from "./ui/macbook-scroll";

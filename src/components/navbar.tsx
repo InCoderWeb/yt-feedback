@@ -40,10 +40,11 @@ export default function Navbar({
 	logoSrc = "/placeholder.svg?height=32&width=32",
 }: NavbarProps) {
 	const [isOpen, setIsOpen] = useState(false);
-	const [scrolled, setScrolled] = useState(false);
+	const [_, setScrolled] = useState(false);
 
 	// Handle scroll effect
 	useEffect(() => {
+
 		const handleScroll = () => {
 			if (window.scrollY > 10) {
 				setScrolled(true);
