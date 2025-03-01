@@ -75,6 +75,8 @@ export function HeroSection() {
 				ease={80}
 				color={color}
 				refresh={true}
+                vx={0.5}
+                vy={0.5}
 			/>
 		</div>
 	);
