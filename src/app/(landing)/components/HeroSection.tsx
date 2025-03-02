@@ -1,12 +1,13 @@
 "use client";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
-import { TextHighlight } from "@/components/ui/hero-highlight";
+import { TextHighlight } from "@/components/ui/TextHighlight";
 import { Particles } from "@/components/magicui/particles";
 import { useEffect, useState } from "react";
-import { Safari } from "./magicui/safari";
+import { Safari } from "@/components/magicui/safari";
+import { BlurFade } from "@/components/magicui/blur-fade";
 
-export function HeroSection() {
+export default function HeroSection() {
 	const { resolvedTheme } = useTheme();
 	const [color, setColor] = useState("#dc143c");
 
@@ -17,32 +18,36 @@ export function HeroSection() {
 		<div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-background">
 			<span className="pointer-events-none w-full z-10 whitespace-pre-wrap text-center text-8xl font-semibold leading-none">
 				<div className="overflow-hidden w-full h-screen flex justify-center flex-col items-center relative">
-					<motion.h1
-						initial={{
-							opacity: 0,
-							y: 20,
-						}}
-						animate={{
-							opacity: 1,
-							y: [20, -5, 0],
-						}}
-						transition={{
-							duration: 0.5,
-							ease: [0.4, 0.0, 0.2, 1],
-						}}
-						className="text-2xl sm:text-5xl/13 lg:text-6xl/13 pt-8 px-4 font-bold text-neutral-600/90 dark:text-white max-w-4xl leading-8 lg:leading-snug text-center mx-auto"
-					>
-						Transform <TextHighlight>AI Feedback</TextHighlight>{" "}
-						into Your Channel’s{" "}
-						<TextHighlight>Secret Weapon</TextHighlight>
-					</motion.h1>
-					<div className="w-full p-4 flex justify-center items-center">
-						<Safari
-							url="ytfeedback.ai"
-							className="max-w-[45rem] w-full h-fit mt-6 shadow rounded-lg"
-							imageSrc="/heroImage.jpeg"
-						/>
-					</div>
+					<BlurFade delay={0.1} inView>
+						<motion.h1
+							initial={{
+								opacity: 0,
+								y: 20,
+							}}
+							animate={{
+								opacity: 1,
+								y: [20, -5, 0],
+							}}
+							transition={{
+								duration: 0.5,
+								ease: [0.4, 0.0, 0.2, 1],
+							}}
+							className="text-2xl sm:text-5xl/13 lg:text-6xl/13 pt-8 px-4 font-bold text-neutral-600/90 dark:text-white max-w-4xl leading-8 lg:leading-snug text-center mx-auto"
+						>
+							Transform <TextHighlight>AI Feedback</TextHighlight>{" "}
+							into Your Channel’s{" "}
+							<TextHighlight>Secret Weapon</TextHighlight>
+						</motion.h1>
+					</BlurFade>
+					<BlurFade delay={0.2} inView>
+						<div className="w-full p-4 flex justify-center items-center">
+							<Safari
+								url="ytfeedback.ai"
+								className="max-w-[45rem] w-full h-fit mt-6 shadow rounded-lg"
+								imageSrc="/heroImage.jpeg"
+							/>
+						</div>
+					</BlurFade>
 				</div>
 				{/* <div className="md:hidden h-screen flex justify-center items-center flex-col relative p-4">
 					<motion.h1
