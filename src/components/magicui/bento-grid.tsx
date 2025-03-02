@@ -39,8 +39,8 @@ const BentoCard = ({
   background,
   Icon,
   description,
-  href,
-  cta,
+  // href,
+  // cta,
   ...props
 }: BentoCardProps) => (
   <div
