@@ -94,3 +94,11 @@ export const Highlight = ({
 		</motion.span>
 	);
 };
+
+export const TextHighlight = ({ children }: { children: React.ReactNode }) => {
+  return (
+	<>
+		<motion.span className="text-primary">{children}</motion.span>
+	</>
+  )
+}

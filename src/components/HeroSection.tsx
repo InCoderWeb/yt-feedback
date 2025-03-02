@@ -1,10 +1,9 @@
 "use client";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
-import { Highlight } from "@/components/ui/hero-highlight";
+import { TextHighlight } from "@/components/ui/hero-highlight";
 import { Particles } from "@/components/magicui/particles";
 import { useEffect, useState } from "react";
-import { MacbookScroll } from "./ui/macbook-scroll";
 import { Safari } from "./magicui/safari";
 
 export function HeroSection() {
@@ -17,33 +16,35 @@ export function HeroSection() {
 	return (
 		<div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-background">
 			<span className="pointer-events-none w-full z-10 whitespace-pre-wrap text-center text-8xl font-semibold leading-none">
-				<div className="overflow-hidden w-full hidden md:block">
-					<MacbookScroll
-						title={
-							<motion.h1
-								initial={{
-									opacity: 0,
-									y: 20,
-								}}
-								animate={{
-									opacity: 1,
-									y: [20, -5, 0],
-								}}
-								transition={{
-									duration: 0.5,
-									ease: [0.4, 0.0, 0.2, 1],
-								}}
-								className="text-2xl px-4 md:text-4xl lg:text-7xl font-bold text-neutral-700 dark:text-white max-w-5xl leading-8 lg:leading-snug text-center mx-auto "
-							>
-								Transform <Highlight>Feedback</Highlight> into
-								Your Channel’s Secret Weapon
-							</motion.h1>
-						}
-						src={`/heroImage.jpeg`}
-						showGradient={true}
-					/>
+				<div className="overflow-hidden w-full h-screen flex justify-center flex-col items-center relative">
+					<motion.h1
+						initial={{
+							opacity: 0,
+							y: 20,
+						}}
+						animate={{
+							opacity: 1,
+							y: [20, -5, 0],
+						}}
+						transition={{
+							duration: 0.5,
+							ease: [0.4, 0.0, 0.2, 1],
+						}}
+						className="text-2xl sm:text-5xl/13 lg:text-6xl/13 pt-8 px-4 font-bold text-neutral-600/90 dark:text-white max-w-4xl leading-8 lg:leading-snug text-center mx-auto"
+					>
+						Transform <TextHighlight>AI Feedback</TextHighlight>{" "}
+						into Your Channel’s{" "}
+						<TextHighlight>Secret Weapon</TextHighlight>
+					</motion.h1>
+					<div className="w-full p-4 flex justify-center items-center">
+						<Safari
+							url="ytfeedback.ai"
+							className="max-w-[45rem] w-full h-fit mt-6 shadow rounded-lg"
+							imageSrc="/heroImage.jpeg"
+						/>
+					</div>
 				</div>
-				<div className="md:hidden h-screen flex justify-center items-center flex-col relative p-4">
+				{/* <div className="md:hidden h-screen flex justify-center items-center flex-col relative p-4">
 					<motion.h1
 						initial={{
 							opacity: 0,
@@ -62,12 +63,8 @@ export function HeroSection() {
 						Transform <Highlight>Feedback</Highlight> into Your
 						Channel’s Secret Weapon
 					</motion.h1>
-					<Safari
-						url="magicui.design"
-						className="max-w-md w-full h-fit mt-6 shadow md:hidden"
-						imageSrc="/heroImage.jpeg"
-					/>
-				</div>
+					
+				</div> */}
 			</span>
 			<Particles
 				className="absolute inset-0 z-0"
