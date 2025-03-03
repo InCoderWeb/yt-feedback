@@ -32,7 +32,7 @@ export default function HeroSection() {
 								duration: 0.5,
 								ease: [0.4, 0.0, 0.2, 1],
 							}}
-							className="text-2xl sm:text-5xl/13 lg:text-6xl/13 pt-8 px-4 font-bold text-neutral-600/90 dark:text-white max-w-4xl leading-8 lg:leading-snug text-center mx-auto"
+							className="text-[clamp(1.5rem,2.5vw,6rem)] md:text-[clamp(2rem,2.5vw,6rem)] pt-8 px-4 font-bold text-neutral-600/90 dark:text-white md:max-w-[40vw] leading-8 lg:leading-snug text-center mx-auto"
 						>
 							Transform <TextHighlight>AI Feedback</TextHighlight>{" "}
 							into Your Channel’s{" "}
@@ -40,11 +40,12 @@ export default function HeroSection() {
 						</motion.h1>
 					</BlurFade>
 					<BlurFade delay={0.2} inView>
-						<div className="w-full p-4 flex justify-center items-center">
+						<div className="w-full p-4 h-[calc(100vh-30rem)] xl:h-[calc(100vh-26rem)] flex justify-center items-center">
 							<Safari
 								url="ytfeedback.ai"
-								className="max-w-[45rem] w-full h-fit mt-6 shadow rounded-lg"
-								imageSrc="/heroImage.jpeg"
+								className="w-full h-full max-h-full mt-6 rounded-lg"
+								// imageSrc="/heroImage.jpeg"
+								imageSrc="https://img.freepik.com/free-vector/coming-soon-background-with-focus-light-effect_1017-31453.jpg?t=st=1741013161~exp=1741016761~hmac=bb1e2c11da127d7b09f7d665555a52253c9cdfa9eb6ce85deefce0a4bc9bbfb1&w=1060"
 							/>
 						</div>
 					</BlurFade>

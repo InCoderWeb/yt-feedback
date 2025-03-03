@@ -57,7 +57,7 @@ const Services = () => {
 		<>
 			<section
 				id="services"
-				className="py-20 px-6 md:h-screen h-max flex flex-col items-center justify-center max-w-7xl mx-auto"
+				className="py-20 px-6 lg:h-screen h-max flex flex-col items-center justify-center max-w-7xl mx-auto"
 			>
 				<BentoGrid className="lg:grid-rows-3">
 					{features.map((feature) => (

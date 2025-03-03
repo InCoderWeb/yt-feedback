@@ -78,108 +78,114 @@ export default function Navbar({
 			)}
 			ref={navbarRef}
 		>
-			<div className="mx-auto px-4 sm:px-6 w-fit bg-white/80 backdrop-blur-md shadow-sm rounded-full">
-				<div className="flex h-16 items-center justify-center">
-					{/* Logo */}
-					<div className="flex-shrink-0 mr-8">
-						<Link href="/" className="flex items-center">
-							<div className="relative h-8 w-8 mr-2">
-								<Image
-									src={logoSrc}
-									alt={`${brandName} logo`}
-									width={32}
-									height={32}
-									className="object-contain"
-									priority
-								/>
-							</div>
-							<span className="text-xl font-bold text-primary">
-								{brandName}
-							</span>
-						</Link>
-					</div>
+			<div className="relative bg-gradient-to-r from-rose-400/60 via-red-300/20 to-red-500/40 p-[3px] rounded-full mx-auto w-fit">
+				<div className="mx-auto px-4 sm:px-6 w-fit bg-white/80 dark:bg-black/50  backdrop-blur-md shadow-sm rounded-full mask mask-rounded-lg">
+					<div className="flex h-16 items-center justify-center">
+						{/* Logo */}
+						<div className="flex-shrink-0 mr-8">
+							<Link href="/" className="flex items-center">
+								<div className="relative h-8 w-8 mr-2">
+									<Image
+										src={logoSrc}
+										alt={`${brandName} logo`}
+										width={32}
+										height={32}
+										className="object-contain"
+										priority
+									/>
+								</div>
+								<span className="text-xl font-bold text-primary">
+									{brandName}
+								</span>
+							</Link>
+						</div>
 
-					{/* Desktop Navigation */}
-					<nav className="hidden md:flex items-center space-x-8">
+						{/* Desktop Navigation */}
+						<nav className="hidden md:flex items-center space-x-8">
+							{loaded ? (
+								<>
+									{navItems.map((item, index) => (
+										<BlurFade
+											key={item.href}
+											delay={0.1 * index}
+											inView
+										>
+											<Link
+												href={item.href}
+												className={cn(
+													"text-sm font-medium relative transition-colors hover:text-primary group",
+													item.isActive &&
+														"text-primary font-semibold"
+												)}
+											>
+												{item.label}
+												<div className="w-2/5 h-0.5 -bottom-1.5 left-0 translate-2/3 absolute rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-all group-hover:-bottom-1"></div>
+											</Link>
+										</BlurFade>
+									))}
+								</>
+							) : (
+								<>
+									{navItems.map((i) => (
+										<div
+											key={i.href}
+											className="w-20 h-6 bg-background/80 animate-pulse rounded-full"
+										></div>
+									))}
+								</>
+							)}
+						</nav>
+
+						{/* CTA Button */}
 						{loaded ? (
 							<>
-								{navItems.map((item, index) => (
-									<BlurFade
-										key={item.href}
-										delay={0.1 * index}
-										inView
-									>
-										<Link
-											href={item.href}
-											className={cn(
-												"text-sm font-medium relative transition-colors hover:text-primary group",
-												item.isActive &&
-													"text-primary font-semibold"
-											)}
-										>
-											{item.label}
-											<div className="w-2/5 h-0.5 -bottom-1.5 left-0 translate-2/3 absolute rounded-full bg-primary opacity-0 group-hover:opacity-100 transition-all group-hover:-bottom-1"></div>
-										</Link>
+								{ctaButton && (
+									<BlurFade delay={0.2} inView>
+										<div className="hidden md:block ml-8">
+											<Button
+												size="sm"
+												variant={
+													ctaButton.variant ||
+													"default"
+												}
+												className="rounded-full px-6 dark:bg-primary"
+												asChild
+											>
+												<Link href={ctaButton.href}>
+													<ArrowUpRight className="size-5" />
+													{ctaButton.label}
+												</Link>
+											</Button>
+										</div>
 									</BlurFade>
-								))}
+								)}
 							</>
 						) : (
 							<>
-								{navItems.map((i) => (
-									<div
-										key={i.href}
-										className="w-20 h-6 bg-background/80 animate-pulse rounded-full"
-									></div>
-								))}
+								<div className="w-20 h-9 ml-4 bg-background/80 animate-pulse rounded-full"></div>
 							</>
 						)}
-					</nav>
-
-					{/* CTA Button */}
-					{loaded ? (
-						<>
-							{ctaButton && (
-								<BlurFade delay={0.2} inView>
-									<div className="hidden md:block ml-8">
-										<Button
-											size="sm"
-											variant={
-												ctaButton.variant || "default"
-											}
-											className="rounded-full px-6"
-											asChild
-										>
-											<Link href={ctaButton.href}>
-												<ArrowUpRight className="size-5" />
-												{ctaButton.label}
-											</Link>
-										</Button>
-									</div>
-								</BlurFade>
-							)}
-						</>
-					) : (
-						<>
-							<div className="w-20 h-9 ml-4 bg-background/80 animate-pulse rounded-full"></div>
-						</>
-					)}
-					{/* Mobile Menu Button */}
-					<div className="block md:hidden">
-						<button
-							type="button"
-							className="inline-flex items-center justify-center rounded-md p-2 text-foreground hover:bg-muted/30 transition-colors"
-							onClick={() => setIsOpen(!isOpen)}
-							aria-expanded={isOpen}
-						>
-							<span className="sr-only">
-								{isOpen ? "Close menu" : "Open menu"}
-							</span>
-							{isOpen ? (
-								<X className="h-6 w-6" aria-hidden="true" />
-							) : (
-								<Menu className="h-6 w-6" aria-hidden="true" />
-							)}
-						</button>
+						{/* Mobile Menu Button */}
+						<div className="block md:hidden">
+							<button
+								type="button"
+								className="inline-flex items-center justify-center rounded-md p-2 text-foreground hover:bg-muted/30 transition-colors"
+								onClick={() => setIsOpen(!isOpen)}
+								aria-expanded={isOpen}
+							>
+								<span className="sr-only">
+									{isOpen ? "Close menu" : "Open menu"}
+								</span>
+								{isOpen ? (
+									<X className="h-6 w-6" aria-hidden="true" />
+								) : (
+									<Menu
+										className="h-6 w-6"
+										aria-hidden="true"
+									/>
+								)}
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
