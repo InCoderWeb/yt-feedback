@@ -1,72 +1,125 @@
-import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
+import { BlurFade } from "@/components/magicui/blur-fade";
+import { cn } from "@/lib/utils";
 import {
-	GlobeIcon,
-	InputIcon,
-	FileTextIcon,
-	CalendarIcon,
-	BellIcon,
-} from "@radix-ui/react-icons";
+	IconAdjustmentsBolt,
+	IconCloud,
+	IconCurrencyDollar,
+	IconEaseInOut,
+	IconHeart,
+	IconHelp,
+	IconRouteAltLeft,
+	IconTerminal2,
+} from "@tabler/icons-react";
 
-const features = [
-	{
-		Icon: FileTextIcon,
-		name: "Save your files",
-		description: "We automatically save your files as you type.",
-		href: "/",
-		cta: "Learn more",
-		background: <img className="absolute -right-20 -top-20 opacity-60" />,
-		className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
-	},
-	{
-		Icon: InputIcon,
-		name: "Full text search",
-		description: "Search through all your files in one place.",
-		href: "/",
-		cta: "Learn more",
-		background: <img className="absolute -right-20 -top-20 opacity-60" />,
-		className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
-	},
-	{
-		Icon: GlobeIcon,
-		name: "Multilingual",
-		description: "Supports 100+ languages and counting.",
-		background: <img className="absolute -right-20 -top-20 opacity-60" />,
-		className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
-	},
-	{
-		Icon: CalendarIcon,
-		name: "Calendar",
-		description: "Use the calendar to filter your files by date.",
-		background: <img className="absolute -right-20 -top-20 opacity-60" />,
-		className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
-	},
-	{
-		Icon: BellIcon,
-		name: "Notifications",
-		description:
-			"Get notified when someone shares a file or mentions you in a comment.",
-		href: "/",
-		cta: "Learn more",
-		background: <img className="absolute -right-20 -top-20 opacity-60" />,
-		className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
-	},
-];
-
-const Services = () => {
+export function FeaturesSection() {
+	const features = [
+		{
+			title: "Built for developers",
+			description:
+				"Built for engineers, developers, dreamers, thinkers and doers.",
+			icon: <IconTerminal2 />,
+		},
+		{
+			title: "Ease of use",
+			description:
+				"It's as easy as using an Apple, and as expensive as buying one.",
+			icon: <IconEaseInOut />,
+		},
+		{
+			title: "Pricing like no other",
+			description:
+				"Our prices are best in the market. No cap, no lock, no credit card required.",
+			icon: <IconCurrencyDollar />,
+		},
+		{
+			title: "100% Uptime guarantee",
+			description: "We just cannot be taken down by anyone.",
+			icon: <IconCloud />,
+		},
+		{
+			title: "Multi-tenant Architecture",
+			description:
+				"You can simply share passwords instead of buying new seats",
+			icon: <IconRouteAltLeft />,
+		},
+		{
+			title: "24/7 Customer Support",
+			description:
+				"We are available a 100% of the time. Atleast our AI Agents are.",
+			icon: <IconHelp />,
+		},
+		{
+			title: "Money back guarantee",
+			description:
+				"If you donot like EveryAI, we will convince you to like us.",
+			icon: <IconAdjustmentsBolt />,
+		},
+		{
+			title: "And everything else",
+			description:
+				"I just ran out of copy ideas. Accept my sincere apologies",
+			icon: <IconHeart />,
+		},
+	];
 	return (
-		<>
-			<section
-				id="services"
-				className="py-20 px-6 lg:h-screen h-max flex flex-col items-center justify-center max-w-7xl mx-auto"
-			>
-				<BentoGrid className="lg:grid-rows-3">
-					{features.map((feature) => (
-						<BentoCard key={feature.name} {...feature} />
-					))}
-				</BentoGrid>
-			</section>
-		</>
+		<div className="h-max lg:h-screen flex justify-center items-center flex-col" id="services">
+			<BlurFade inView>
+				<h1 className="text-3xl md:text-5xl font-semibold text-gray-600 mt-12">
+					These are the Features of YT Feedback
+				</h1>
+			</BlurFade>
+			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-10 max-w-7xl mx-auto">
+				{features.map((feature, index) => (
+					<BlurFade key={feature.title} inView delay={index * 0.5}>
+						<Feature
+							{...feature}
+							index={index}
+						/>
+					</BlurFade>
+				))}
+			</div>
+		</div>
+	);
+}
+
+const Feature = ({
+	title,
+	description,
+	icon,
+	index,
+}: {
+	title: string;
+	description: string;
+	icon: React.ReactNode;
+	index: number;
+}) => {
+	return (
+		<div
+			className={cn(
+				"flex flex-col lg:border-r border my-2 rounded-2xl mx-2 md:border-0 md:rounded-none md:mx-0 md:my-0 py-10 relative group/feature dark:border-neutral-800",
+				(index === 0 || index === 4) &&
+					"lg:border-l dark:border-neutral-800",
+				index < 4 && "lg:border-b dark:border-neutral-800"
+			)}
+		>
+			{index < 4 && (
+				<div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
+			)}
+			{index >= 4 && (
+				<div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-neutral-100 dark:from-neutral-800 to-transparent pointer-events-none" />
+			)}
+			<div className="mb-4 relative z-10 px-10 text-neutral-600 dark:text-neutral-400">
+				{icon}
+			</div>
+			<div className="text-lg font-bold mb-2 relative z-10 px-10">
+				<div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-neutral-300 dark:bg-neutral-700 group-hover/feature:bg-primary transition-all duration-200 origin-center" />
+				<span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-neutral-800 dark:text-neutral-100">
+					{title}
+				</span>
+			</div>
+			<p className="text-sm text-neutral-600 dark:text-neutral-300 max-w-xs relative z-10 px-10">
+				{description}
+			</p>
+		</div>
 	);
 };
-
-export default Services;

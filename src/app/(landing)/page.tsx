@@ -1,12 +1,14 @@
 import HeroSection from "@/app/(landing)/components/HeroSection";
 import Navbar from "@/components/navbar";
 import { customCTA, customNavItems } from "@/constants/navbar.constants";
-import Services from "@/app/(landing)/components/Services";
+import PricingPage from "./components/pricing-page";
+import { FeaturesSection } from "./components/Services";
+import { ContactSection } from "./components/contact";
 
 export default function Home() {
 	return (
 		<>
-			<main className="min-h-screen">
+			<main className="min-h-screen container mx-auto px-4">
 				<Navbar
 					navItems={customNavItems}
 					ctaButton={customCTA}
@@ -14,7 +16,9 @@ export default function Home() {
 					logoSrc="/logo.png"
 				/>
 				<HeroSection />
-				<Services />
+				<FeaturesSection />
+				<PricingPage/>
+				<ContactSection />
 			</main>
 		</>
 	);
