@@ -88,7 +88,7 @@ export default function PricingPage() {
 				</h1>
 				<p className="text-muted-foreground text-xl max-w-2xl mx-auto">
 					Choose the perfect plan for your needs. Always know what
-					you'll pay with our transparent pricing.
+					you&apos;ll pay with our transparent pricing.
 				</p>
 
 				<div className="flex items-center justify-center mt-8 space-x-2">

@@ -10,8 +10,8 @@ export const ContactSection = () => {
 							Contact Us
 						</h1>
 						<p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-							Have questions or need assistance? We're here to
-							help. Fill out the form below and we'll get back to
+							Have questions or need assistance? We&apos;re here to
+							help. Fill out the form below and we&apos;ll get back to
 							you as soon as possible.
 						</p>
 					</div>
